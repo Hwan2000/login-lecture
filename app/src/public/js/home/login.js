@@ -1,6 +1,6 @@
 'usr strict'
 
-const { application } = require("express");
+//const { application } = require("express");
 
 const id = document.querySelector("#id");
 const psword = document.querySelector("#psword");
@@ -12,8 +12,7 @@ function login() {
     const req = {
         id : id.value,
         psword : psword.value,
-    }
-    console.log(JSON.stringify(req));
+    };
 
     fetch("/login", {
         method : "POST",
@@ -22,6 +21,8 @@ function login() {
         },
         body : JSON.stringify(req)
     })
+        .then((res) => res.json())
+        .then(console.log);
 }
 
 console.log(id);
